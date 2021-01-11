@@ -9,6 +9,8 @@ public class App {
         System.out.println("Find Index : ");
         int target = input.nextInt();
         bruteForceSearch(a, target);
+        int index = binarySearch(a, target);
+        System.out.println("Nilai index di : " + index);
 
     }
 
@@ -21,17 +23,19 @@ public class App {
         }
     }
 
-}
+    private static int binarySearch(int a[], int target) {
+        int bawah = 0;
+        int atas = a.length - 1;
 
-/**
- * // Cara Binarysearch // int index = binarySearch(a, target); //
- * System.out.println("Nilai index di : " + index);
- * 
- * private static int binarySearch(int a[], int target) { int bawah = 0; int
- * atas = a.length - 1;
- * 
- * while (atas >= bawah) { int mid = bawah + (atas - bawah) / 2; if (target <
- * a[mid]) atas = mid - 1; else if (target > a[mid]) bawah = mid + 1; else
- * return mid; } return -1; }
- * 
- */
+        while (atas >= bawah) {
+            int mid = bawah + (atas - bawah) / 2;
+            if (target < a[mid])
+                atas = mid - 1;
+            else if (target > a[mid])
+                bawah = mid + 1;
+            else
+                return mid;
+        }
+        return -1;
+    }
+}
